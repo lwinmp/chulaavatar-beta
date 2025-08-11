@@ -1,0 +1,203 @@
+@import url('https://fonts.googleapis.com/css?family=Jaini+Purva');
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+.welcome-page{
+  background-color: #D9D9D9;
+  width: 100vw;
+  height: 100vh;
+}
+
+.welcome-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: #D9D9D9;
+  box-sizing: border-box;
+  z-index: 1000;
+  margin: 0;
+}
+
+.welcome-h1{
+  font-family: 'Jaini Purva', sans-serif;
+  font-weight: bold;
+  text-align: center;
+  font-size: 5em;
+  margin: 0;
+  margin-top: 50px;
+}
+
+.welcome-p{
+  font-family: 'Jaini Purva', sans-serif;
+  text-align: center;
+  font-size: 2em;
+  margin: 10px;
+}
+
+.avatar-icons {
+    display: flex;
+    justify-content: center;
+    gap: 50px;
+    margin-top: 50px;
+    margin-bottom: 10px;
+}
+.avatar-icon {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    object-fit: cover;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+.avatar-icon:hover {
+    transform: scale(1.5);
+}
+
+.generate-button-container{
+  display: flex;
+  margin-top: 50px;
+  margin-bottom: 10px;
+  background-color: #D9D9D9;
+  justify-content: center;
+  align-items: center;
+}
+.welcome-generate-avatar {
+  font-family: 'Jaini Purva', sans-serif;
+  background-color: #ff928f;
+  width: 150px;
+  height: 50px;
+  border: none;
+  border-radius: 15px;
+  padding: 10px 20px;
+  cursor: pointer;
+  font-size: 20px;
+  font-weight: bold;
+  color: black;
+  box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s ease;
+}
+
+.welcome-generate-avatar:hover {
+  background-color: #1b13b5;
+  transform: translateY(-2px);
+}
+
+.navbar-container {
+  display: flex;
+  font-family: 'Jaini Purva', sans-serif;
+  font-size: 1.5rem; 
+  font-weight: bold;
+  align-items: center;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #D9D9D9;
+  padding: 1.5rem 0rem;
+  position: absolute;
+  top: 0;
+  width: 100%;
+  z-index: 1000;
+}
+.navbar-menu {
+    display: flex; 
+    align-items: center;
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    gap: 3rem;
+}
+.navbar-chulaavatar-logo{
+  background-image: linear-gradient(to top, #ff0844 0%, #ffb199 100% );
+  background-size: 100%;
+  -webkit-background-clip: text;
+  -moz-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  -moz-text-fill-color: transparent;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.navbar-item{
+  cursor: pointer;
+  background-image: linear-gradient(to top, #ff0844 0%, #ffb199 100% );
+  background-size: 100%;
+  -webkit-background-clip: text;
+  -moz-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  -moz-text-fill-color: transparent;
+  color: #333;
+  transition: color 0.3s;
+}
+.navbar-item:hover {
+  background-image: linear-gradient(to top, #1b13b5 0%, #5a59f5 100%);
+}
+
+.navbar__links.gradient {
+  background-image: linear-gradient(to top, #ff0844 0%, #ffb199 100%);
+  background-size: 100%;
+  -webkit-background-clip: text;
+  -moz-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  -moz-text-fill-color: transparent;
+  font-family: 'Jaini Purva', sans-serif;
+  font-size: 1rem;
+  font-weight: bold;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.navbar__links.gradient:hover {
+  transform: scale(1.05);
+}
+
+.create-avatar-container {
+  padding-top: 100px;
+  text-align: center;
+}
+
+.create-avatar-h1 {
+  font-family: 'Jaini Purva', sans-serif;
+  font-weight: bold;
+  font-size: 3em;
+  color: black;
+}
+
+.camera-button-container{
+  display: flex;
+  justify-content: center; 
+  align-items: center;    
+  height: 100vh; 
+}
+.camera-button {
+  position: relative;
+  font-family: 'Jaini Purva', sans-serif;
+  background-color: #ff928f;
+  justify-content: center;
+  width: 150px;
+  height: 250px;
+  border: none;
+  border-radius: 15px;
+  padding: 10px 20px;
+  cursor: pointer;
+  font-size: 20px;
+  font-weight: bold;
+  color: black;
+  box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s ease;
+}
+.camera-button:hover{
+  background-color: #1b13b5;
+  transform: translateY(-2px);
+}
+
+
+
+
+
