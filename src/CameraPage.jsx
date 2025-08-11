@@ -3,14 +3,6 @@ import React, {useState} from 'react';
 
 function CameraPage() {
     const navigate = useNavigate();
-
-
-    const [camera, setCamera] = useState();
-
-    const handleCameraButton = () => {
-        
-    };
-
     const handleCameraButtonClick = () => {
         navigate('/qr-code', '_blank', 'noopener,noreferrer');
     };
