@@ -1,11 +1,15 @@
 import React, { useRef, useState, useEffect } from 'react';
 
 
-const MobileWebPage = () => {
+function MobileWebPage ()  {
   const videoRef = useRef(null);
   const canvasRef = useRef(null);
   const [photo, setPhoto] = useState(null);
   const [cameraActive, setCameraActive] = useState(false);
+
+  useEffect(() => {
+    console.log('getUserMedia supported:', !!navigator.mediaDevices?.getUserMedia);
+  }, []);
 
   const startCamera = async () => {
     try {
@@ -16,14 +20,13 @@ const MobileWebPage = () => {
 
       if (videoRef.current) {
         videoRef.current.srcObject = stream;
-        videoRef.current.play(); // Ensure video starts
+        videoRef.current.play();
         setCameraActive(true);
       }
     } catch (err) {
       console.error('Error accessing camera:', err);
       alert(
-        'Camera access was denied or not supported.\n' +
-        'Use HTTPS or localhost and allow camera permissions.'
+        'Camera access denied or not supported.\nUse HTTPS or localhost and allow camera permissions.'
       );
     }
   };
@@ -31,21 +34,20 @@ const MobileWebPage = () => {
   const capturePhoto = () => {
     const video = videoRef.current;
     const canvas = canvasRef.current;
-
     if (!video || !canvas) return;
 
-    const context = canvas.getContext('2d');
-    canvas.width = video.videoWidth || 640;
-    canvas.height = video.videoHeight || 480;
-    context.drawImage(video, 0, 0, canvas.width, canvas.height);
+    const size = 300;
+    canvas.width = size;
+    canvas.height = size;
 
-    const imageData = canvas.toDataURL('image/png');
-    setPhoto(imageData);
+    const cam = canvas.getContext('2d');
+    cam.drawImage(video, 0, 0, size, size);
+    setPhoto(canvas.toDataURL('image/png'));
   };
 
   useEffect(() => {
     return () => {
-      if (videoRef.current && videoRef.current.srcObject) {
+      if (videoRef.current?.srcObject) {
         videoRef.current.srcObject.getTracks().forEach(track => track.stop());
       }
     };
@@ -53,33 +55,29 @@ const MobileWebPage = () => {
 
   return (
     <div className="mobile-camera-container">
-      {!cameraActive && (
+      {!cameraActive ? (
         <button className="mobile-camera-button" onClick={startCamera}>
           Start Camera
         </button>
-      )}
-
-      {cameraActive && (
-        <div>
+      ) : (
+        <>
           <video
-            className="video-preview"
             ref={videoRef}
             autoPlay
             playsInline
             muted
+            className="mobile-camera-video"
           />
           <button className="mobile-camera-button" onClick={capturePhoto}>
-            Capture
+            Capture Photo
           </button>
-        </div>
+        </>
       )}
-
       <canvas ref={canvasRef} className="hidden-canvas" />
-
       {photo && (
-        <div className="photo-preview-container">
+        <div className="photo-preview">
           <h3>Captured Photo:</h3>
-          <img src={photo} alt="Captured" className="photo-preview" />
+          <img src={photo} alt="Captured" />
         </div>
       )}
     </div>
