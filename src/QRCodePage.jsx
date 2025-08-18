@@ -20,7 +20,7 @@ function QRCodePage() {
     <>
       <div className="welcome-page">
         <div className="navbar-container">
-          <a className="navbar-chulaavatar-logo" onClick={handleHomeClick} style={{cursor: 'pointer'}}>
+          <a className="navbar-chulaavatar-logo" onClick={handleHomeClick}>
             ChulaAvatar
           </a>
           <ul className="navbar-menu">
