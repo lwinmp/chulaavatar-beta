@@ -312,8 +312,6 @@
   transform: translateY(-2px);
 }
 
-<<<<<<< HEAD
-=======
 .video-preview {
   width: 100%;
   max-width: 400px;
@@ -322,7 +320,6 @@
   background-color: black;
 }
 
->>>>>>> 39ee419cf9e44d03ebca490d2e8cc7758b5027e8
 .hidden-canvas {
   display: none;
 }
@@ -334,10 +331,9 @@
   object-fit: cover;
   margin-top: 10px;
   box-shadow: 0 4px 12px rgba(0,0,0,0.2);
-<<<<<<< HEAD
 }
-=======
-}
+
+
 .centerimage {
   display: flex;
   justify-content: center; 
@@ -367,11 +363,9 @@
 
 }
 
-
 .avatar5-container {
   display: flex;
   justify-content: right; 
   align-items: right;    
   background-color: #D9D9D9;
 }
->>>>>>> 39ee419cf9e44d03ebca490d2e8cc7758b5027e8
