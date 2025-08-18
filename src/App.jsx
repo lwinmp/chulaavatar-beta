@@ -1,11 +1,8 @@
 import WelcomePage from "./WelcomePage"
 import CameraPage from "./CameraPage"
 import QRCodePage from "./QRCodePage"
-<<<<<<< HEAD
 import AboutChulaAvatarPage from "./AboutChulaAvatarPage";
-=======
 import MobileWebPage from "./MobileWebPage";
->>>>>>> eb5978fcb07cc23b1a48aa5ed8ec8f6a0107631b
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
 
