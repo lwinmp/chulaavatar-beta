@@ -18,6 +18,12 @@ function WelcomePage(){
        window.location.href = '/';
         //window.open(window.location.origin + '/', '_blank', 'noopener,noreferrer');
     };
+
+    const handleAboutChulaClick = () => {
+       navigate('/about-chula');
+       //window.location.href = '/';
+        //window.open(window.location.origin + '/', '_blank', 'noopener,noreferrer');
+    };
     
     return(
         <>
@@ -25,7 +31,7 @@ function WelcomePage(){
                 <div className='navbar-container'>
                     <a className='navbar-chulaavatar-logo' onClick={handleHomeClick}>ChulaAvatar</a>
                     <ul className='navbar-menu'>
-                        <li className='navbar-item'>About ChulaAvatar</li>
+                        <li className='navbar-item' onClick={handleAboutChulaClick}>About ChulaAvatar</li>
                         <li className='navbar-item'>MANGOS</li>
                         <li className='navbar-item'>Contact Us</li>
                     </ul>

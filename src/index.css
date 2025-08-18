@@ -212,6 +212,34 @@
   color: black;
   margin-bottom: 30px;
 }
+.aboutchulaavatar-page{
+  background-color: #D9D9D9;
+    font-family: 'Jaini Purva', sans-serif;
+  width: 100vw;
+  height: 100vh;
+  padding-top: 100px; /* ✅ Push content below navbar */
+  box-sizing: border-box;
+}
 
+.aboutchulaavatar-container{
+  background-color: #D9D9D9;
+  width: 100vw;
+  height: 100vh;
+  text-align: center;
+  padding-top: 100px; 
+  justify-content: center;  /* center horizontally */
+  align-items: center;  
+}
+.aboutchulaavatar-h1{
+  font-size: 2.5em;
+  text-align: center;
+  margin: 0 auto;
+  max-width: 800px;
+  padding: 20px;
+}
 
-
+.aboutchulaavatar-p {
+  font-size: 1.5em;
+  line-height: 1.6;
+  color: #333;
+}
