@@ -215,10 +215,10 @@
 }
 .aboutchulaavatar-page{
   background-color: #D9D9D9;
-    font-family: 'Jaini Purva', sans-serif;
+  font-family: 'Jaini Purva', sans-serif;
   width: 100vw;
   height: 100vh;
-  padding-top: 100px; /* ✅ Push content below navbar */
+  padding-top: 100px; 
   box-sizing: border-box;
 }
 
@@ -228,7 +228,7 @@
   height: 100vh;
   text-align: center;
   padding-top: 100px; 
-  justify-content: center;  /* center horizontally */
+  justify-content: center;  
   align-items: center;  
 }
 .aboutchulaavatar-h1{
@@ -304,7 +304,7 @@
   max-width: 400px;
   border-radius: 10px;
   margin-bottom: 10px;
-  background-color: black; /* shows black area if camera not ready yet */
+  background-color: black;
 }
 
 .hidden-canvas {
@@ -320,4 +320,40 @@
   max-width: 100%;
   border-radius: 10px;
   box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+}
+.centerimage {
+  display: flex;
+  justify-content: center; 
+  align-items: center;    
+  height: 100vh;          
+  background-color: #D9D9D9;
+  font-family: 'Jaini Purva', sans-serif;
+  width: 100vw;
+  padding-top: 100px; 
+  box-sizing: border-box;
+  border: none;
+  z-index: 9999;
+  position: relative;
+}
+
+.centerimage img {
+  max-width: 80%;   
+  max-height: 80%;
+  object-fit: contain;
+  border-radius: 15px; 
+}
+
+.bottom-left-button-container {
+  justify-content: flex-start; 
+  margin: 20px;
+  width: fit-content;
+
+}
+
+
+.avatar5-container {
+  display: flex;
+  justify-content: right; 
+  align-items: right;    
+  background-color: #D9D9D9;
 }

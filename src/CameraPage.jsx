@@ -9,6 +9,11 @@ function CameraPage() {
     const handleHomeClick = () => {
         navigate('/');
     };
+    const handleAboutChulaClick = () => {
+       navigate('/about-chula');
+       //window.location.href = '/';
+        //window.open(window.location.origin + '/', '_blank', 'noopener,noreferrer');
+    }
 
     return (
         <> 
@@ -18,7 +23,7 @@ function CameraPage() {
                         ChulaAvatar
                     </a>
                     <ul className='navbar-menu'>
-                        <li className='navbar-item'>About ChulaAvatar</li>
+                        <li className='navbar-item' onClick={handleAboutChulaClick}>About ChulaAvatar</li>
                         <li className='navbar-item'>MANGOS</li>
                         <li className='navbar-item'>Contact Us</li>
                     </ul>

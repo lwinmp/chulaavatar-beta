@@ -3,7 +3,8 @@ import Avatar1 from './assets/avatar1.png';
 import Avatar2 from './assets/avatar2.png';
 import Avatar3 from './assets/avatar3.png';
 import Avatar4 from './assets/avatar4.png';
-
+import centerimage from './assets/centerimage.jpg';
+import avatar5 from './assets/avatar5.jpg';
 
 function WelcomePage(){
     const navigate = useNavigate();
@@ -56,6 +57,24 @@ function WelcomePage(){
                 <div className="generate-button-container"> 
                     <button onClick={handleButtonClick} className="welcome-generate-avatar">Create Avatar</button>
                 </div>
+
+                <div> 
+                    <div className="centerimage">
+                        <img src= {centerimage} alt="Centered" />
+                    </div>
+                </div>
+                <div className ="bottom-left-button-container">
+                    <button onClick={handleButtonClick} className="welcome-generate-avatar">
+                        Create Avatar
+                    </button>
+                </div>
+
+                <div>
+                    <div className="avatar5-container">
+                        <img src={avatar5} alt="Right side" />
+                    </div>
+                </div>
+
             </div>
         </>
     );
