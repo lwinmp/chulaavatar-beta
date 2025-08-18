@@ -4,7 +4,10 @@ import { useNavigate } from 'react-router-dom';
 function QRCodePage() {
   const navigate = useNavigate();
 
-  const qrData = "https://www.mangosgo.com/"; 
+  const qrData = () => {
+    navigate('/mobile-webpage', '_blank', 'noopener,noreferrer');
+  };
+
   const qrSize = "200x200";
   const qrUrl = `https://api.qrserver.com/v1/create-qr-code/?data=${encodeURIComponent(qrData)}&size=${qrSize}`;
 
