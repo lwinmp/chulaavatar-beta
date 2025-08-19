@@ -71,7 +71,8 @@ function WelcomePage() {
 
          <div className='info-text-container'>
             <h2>3D Human Avatar Creation for Metaverse</h2>
-            <p>This paper presents the process of creating 3D human avatars from reconstructed 3D face produced by PRNet model.</p>
+            <p>This paper presents the process of creating 3D human avatars from reconstructed 3D face produced by PRNet model. Explore the 
+               paper <a href='https://ieeexplore.ieee.org/document/11101093'>here</a>.</p>
         </div>
 
         <div className="avatar5-container">

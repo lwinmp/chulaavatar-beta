@@ -396,6 +396,16 @@
   justify-content: flex-start;
   gap: 0.5rem; 
 }
+.info-text-container a {
+    color: #1b13b5;       /* or any color you want */
+    text-decoration: underline;
+    font-weight: bold;
+    transition: color 0.3s;
+}
+
+.info-text-container a:hover {
+    color: #ff0844;
+}
 
 .bottom-left-button-container {
   width: 100%;
