@@ -65,7 +65,7 @@ function WelcomePage() {
       
         <div className="bottom-left-button-container">
           <button onClick={handleButtonClick} className="welcome-generate-avatar">
-            Create Avatar
+            Create Avatar <span class="arrow">&rarr;</span>
           </button>
         </div>
 
