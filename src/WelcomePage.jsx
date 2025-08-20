@@ -20,6 +20,10 @@ function WelcomePage() {
   const handleAboutChulaClick = () => {
     navigate('/about-chula');
   };
+  
+  const handleMangosClick = () => {
+    window.open("https://www.mangosgo.com/" + '/', '_blank', 'noopener,noreferrer');
+  }
 
   return (
     <div className="welcome-page">
@@ -28,7 +32,7 @@ function WelcomePage() {
         <a className="navbar-chulaavatar-logo" onClick={handleHomeClick}>ChulaAvatar</a>
         <ul className="navbar-menu">
           <li className="navbar-item" onClick={handleAboutChulaClick}>About ChulaAvatar</li>
-          <li className="navbar-item">MANGOS</li>
+          <li className="navbar-item" onClick={handleMangosClick}>MANGOS</li>
           <li className="navbar-item">Contact Us</li>
         </ul>
       </div>

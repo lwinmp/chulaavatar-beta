@@ -13,6 +13,10 @@ function AboutChulaAvatarPage() {
         //window.open(window.location.origin + '/', '_blank', 'noopener,noreferrer');
     };
 
+    const handleMangosClick = () => {
+    window.open("https://www.mangosgo.com/" + '/', '_blank', 'noopener,noreferrer');
+    }
+
   return (
     <>  
       <div className="aboutchulaavatar-page">
@@ -22,7 +26,7 @@ function AboutChulaAvatarPage() {
           </a>
           <ul className="navbar-menu">
             <li className="navbar-item" onClick={handleCreate3DClick}>Create 3D Avatar</li>
-            <li className="navbar-item">MANGOS</li>
+            <li className="navbar-item"onClick={handleMangosClick}>MANGOS</li>
             <li className="navbar-item">Contact Us</li>
           </ul>
         </div>

@@ -14,6 +14,9 @@ function CameraPage() {
        //window.location.href = '/';
         //window.open(window.location.origin + '/', '_blank', 'noopener,noreferrer');
     }
+    const handleMangosClick = () => {
+    window.open("https://www.mangosgo.com/" + '/', '_blank', 'noopener,noreferrer');
+    }
 
     return (
         <> 
@@ -24,7 +27,7 @@ function CameraPage() {
                     </a>
                     <ul className='navbar-menu'>
                         <li className='navbar-item' onClick={handleAboutChulaClick}>About ChulaAvatar</li>
-                        <li className='navbar-item'>MANGOS</li>
+                        <li className='navbar-item' onClick={handleMangosClick}>MANGOS</li>
                         <li className='navbar-item'>Contact Us</li>
                     </ul>
                 </div>
