@@ -6,7 +6,7 @@ function MobileWebPage() {
   
   // Instructions
   const instructions = [
-    "Please tie your hair.",
+    "Please tie your hair. \nor \nDon't let the hair cover your face.",
     "Ensure good lighting.",
     "Take off your glasses."
   ];

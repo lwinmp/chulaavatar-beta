@@ -31,6 +31,9 @@ function QRCodePage() {
     window.open("https://www.mangosgo.com/", '_blank', 'noopener,noreferrer');
   };
 
+    const handleGenerateAvatar = () => {
+      alert("Generating 3D Avatar for you ...");
+    }
   return (
     <>
       <div className="welcome-page">
@@ -73,6 +76,11 @@ function QRCodePage() {
                 </div>
               ))}
             </div>
+
+            <div className='avatar-generate-button-container'>
+              <button className='avatar-generate-button' onClick={handleGenerateAvatar}>Generate 3D Avatar</button>
+             </div>
+
           </div>
         )}
       </div>

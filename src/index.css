@@ -439,8 +439,6 @@
   object-fit: cover;
 }
 
-/* MobileWebPage.css */
-
 .mobile-webpage {
   min-height: 100vh;
   background-color: #f3f4f6;
@@ -448,7 +446,6 @@
   font-family: Arial, sans-serif;
 }
 
-/* Instructions Styles */
 .instructions-container {
   max-width: 400px;
   margin: 0 auto;
@@ -509,7 +506,6 @@
   background-color: #047857;
 }
 
-/* Camera Section Styles */
 .container {
   max-width: 400px;
   margin: 0 auto;
@@ -585,13 +581,13 @@
   display: none;
 }
 
-/* Photo previews wrapper */
 .photo-previews-wrapper {
   width: 100%;
   margin: 1rem 0;
   display: flex;
   justify-content: center;
 }
+
 
 /* Horizontal photo previews container */
 .photo-previews {
@@ -601,11 +597,18 @@
   justify-content: center;
   align-items: center;
   flex-wrap: wrap; /* Allow wrapping on small screens */
+}
+.photo-previews {
+  display: flex;
+  flex-direction: row; 
+  gap: 0.5rem;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap; 
   max-width: 100%;
   padding: 0.5rem;
 }
 
-/* Individual preview photo styling */
 .captured-preview-photo {
   width: 80px;
   height: 60px;
@@ -653,7 +656,6 @@
   background-color: #1d4ed8;
 }
 
-/* Results Section Styles */
 .results-section {
   background-color: #ffffff;
   border-radius: 0.5rem;
@@ -728,7 +730,7 @@
   background-color: #047857;
 }
 
-/* Mobile Responsive */
+
 @media (max-width: 480px) {
   .mobile-webpage {
     padding: 0.5rem;
@@ -781,7 +783,6 @@
   }
 }
 
-/* Extra small screens */
 @media (max-width: 320px) {
   .captured-preview-photo {
     width: 60px;
@@ -789,7 +790,10 @@
   }
 }
 
-/* Captured photos section styling */
+.instruction-text {
+  white-space: pre-line; /* respects \n and renders a new line */
+}
+
 .captured-photos-section {
   display: flex;
   justify-content: center;
@@ -799,7 +803,6 @@
   background-color: #D9D9D9;
 }
 
-/* Photos grid container */
 .photos-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -809,7 +812,6 @@
   justify-items: center;
 }
 
-/* Individual photo item container */
 .photo-item {
   display: flex;
   flex-direction: column;
@@ -826,7 +828,6 @@
   box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
 }
 
-/* Uploaded photo styling */
 .uploaded-photo {
   width: 100%;
   max-width: 300px;
@@ -836,7 +837,6 @@
   border: 2px solid #e9ecef;
 }
 
-/* Mobile responsive design */
 @media (max-width: 768px) {
   .captured-photos-section {
     padding: 1rem;
@@ -858,10 +858,33 @@
   }
 }
 
-/* Alternative layout for exactly 3 photos in a row */
 @media (min-width: 1024px) {
   .photos-grid {
     grid-template-columns: repeat(3, 1fr);
     max-width: 1000px;
   }
+}
+
+.avatar-generate-button-container {
+  margin-top: 2rem; 
+  display: flex;
+  justify-content: center; 
+  width: 100%;
+}
+
+.avatar-generate-button {
+  padding: 0.8rem 2rem;
+  font-size: 1rem;
+  cursor: pointer;
+  border-radius: 8px;
+  border: none;
+  font-family: 'Jaini Purva', sans-serif;
+  background-color: #ff928f;
+  color: black;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.avatar-generate-button:hover {
+  background-color: #1b13b5;
+  transform: translateY(-2px);
 }
