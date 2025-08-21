@@ -1,13 +1,17 @@
 import React from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 
 function QRCodePage() {
   const navigate = useNavigate();
+  const location = useLocation();
+  
+  // Get the captured photos from navigation state
+  const capturedPhotos = location.state?.capturedPhotos || [];
+  
+  // Debug log to check if photos are received
+  console.log('Received photos:', capturedPhotos.length);
 
-  const qrData = () => {
-    navigate('/mobile-webpage', '_blank', 'noopener,noreferrer');
-  };
-
+  const qrData = window.location.origin + '/mobile-webpage';
   const qrSize = "200x200";
   const qrUrl = `https://api.qrserver.com/v1/create-qr-code/?data=${encodeURIComponent(qrData)}&size=${qrSize}`;
 
@@ -16,17 +20,16 @@ function QRCodePage() {
   };
 
   const handleBackClick = () => {
-    navigate('/camera-code', '_blank', 'noopener,noreferrer'); 
+    navigate('/camera-code');
   };
+
   const handleAboutChulaClick = () => {
-       navigate('/about-chula');
-       //window.location.href = '/';
-        //window.open(window.location.origin + '/', '_blank', 'noopener,noreferrer');
-    }
+    navigate('/about-chula');
+  };
 
   const handleMangosClick = () => {
-    window.open("https://www.mangosgo.com/" + '/', '_blank', 'noopener,noreferrer');
-  }
+    window.open("https://www.mangosgo.com/", '_blank', 'noopener,noreferrer');
+  };
 
   return (
     <>
@@ -41,20 +44,37 @@ function QRCodePage() {
             <li className="navbar-item">Contact Us</li>
           </ul>
         </div>
-
-        <div className="back-button-container">
-            <button className="qr-back-button" onClick={handleBackClick}>
-            ← Back
-            </button>
-        </div>
-        
-
-        <div className="qr-code-container">
-          <h1 className="qr-code-h1">
-            Scan the QR Code with your smart phone to access the camera.
-          </h1>
-          <img src={qrUrl} alt="QR Code" />
-        </div>
+        {/* Show QR code section only if no photos uploaded */}
+        {capturedPhotos.length === 0 ? (
+          <>
+            <div className="back-button-container">
+              <button className="qr-back-button" onClick={handleBackClick}>
+                ← Back
+              </button>
+            </div>
+            <div className="qr-code-container">
+              <h1 className="qr-code-h1">
+                Scan the QR Code with your smart phone to access the camera.
+              </h1>
+              <img src={qrUrl} alt="QR Code" />
+            </div>
+          </>
+        ) : (
+          /* Display only captured photos when uploaded */
+          <div className="captured-photos-section">
+            <div className="photos-grid">
+              {capturedPhotos.slice(0, 3).map((photo, index) => (
+                <div key={index} className="photo-item">
+                  <img
+                    src={photo}
+                    alt={`Uploaded photo ${index + 1}`}
+                    className="uploaded-photo"
+                  />
+                </div>
+              ))}
+            </div>
+          </div>
+        )}
       </div>
     </>
   );

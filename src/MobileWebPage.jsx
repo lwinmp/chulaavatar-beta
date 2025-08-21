@@ -1,5 +1,9 @@
 import React, { useState, useRef, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
+
 function MobileWebPage() {
+  const navigate = useNavigate();
+  
   // Instructions
   const instructions = [
     "Please tie your hair.",
@@ -19,7 +23,10 @@ function MobileWebPage() {
   const [isCameraReady, setIsCameraReady] = useState(false);
   const [isCameraActive, setIsCameraActive] = useState(false);
 
-  // Start camera after instructions
+  const handleUploadPic = () => {
+    navigate('/qr-code', { state: { capturedPhotos: photos } });
+  }
+
   const handleNextInstruction = () => {
     if (currentStep < instructions.length - 1) {
       setCurrentStep(currentStep + 1);
@@ -46,7 +53,7 @@ function MobileWebPage() {
     }
   };
 
-  // Cleanup on unmount
+ 
   useEffect(() => {
     if (!showInstructions) {
       startCamera();
@@ -58,10 +65,8 @@ function MobileWebPage() {
     };
   }, [showInstructions]);
 
-  // Retake and capture functions remain the same
   const handleRetakePhotos = () => {
     setPhotos([]);
-
     if (streamRef.current) {
       streamRef.current.getTracks().forEach((track) => track.stop());
     }
@@ -167,7 +172,7 @@ function MobileWebPage() {
                 <button className="retake-button" onClick={handleRetakePhotos}>
                   Retake the pictures
                 </button>
-                <button className="upload-button" onClick={() => alert('Uploading photos...')}>
+                <button className="upload-button" onClick={handleUploadPic}>
                   Upload Photos
                 </button>
               </div>
