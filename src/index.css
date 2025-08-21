@@ -438,86 +438,430 @@
   border-radius: 15px;
   object-fit: cover;
 }
+
+/* MobileWebPage.css */
+
 .mobile-webpage {
-  margin: 0 auto;
-  padding: 20px;
-  box-sizing: border-box;
-  background-color: #D9D9D9;
   min-height: 100vh;
-  position: relative;
-}
-.container {
-  padding: 20px;
-  font-family: 'Jaini Purva', sans-serif;
-  max-width: 800px;
-  margin: 0 auto;
+  background-color: #f3f4f6;
+  padding: 1rem;
+  font-family: Arial, sans-serif;
 }
 
-/* Camera section styles */
-.camera-section {
+/* Instructions Styles */
+.instructions-container {
+  max-width: 400px;
+  margin: 0 auto;
+  text-align: center;
+  padding: 2rem;
+  background-color: #ffffff;
+  border-radius: 0.5rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.instruction-slide {
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
+.instruction-text {
+  font-size: 1.125rem;
+  color: #374151;
+  margin-bottom: 2rem;
+  padding: 1.5rem;
+  background-color: #f9fafb;
+  border-radius: 0.5rem;
+  border: 2px solid #e5e7eb;
+  width: 100%;
+}
+
+.buttons {
+  display: flex;
+  gap: 0.5rem;
+  justify-content: center;
+}
+
+.next-btn, .start-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #2563eb;
+  color: white;
+  padding: 0.75rem 1.5rem;
+  border-radius: 0.5rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s;
+  border: none;
+  font-size: 1rem;
+}
+
+.next-btn:hover {
+  background-color: #1d4ed8;
+}
+
+.start-btn {
+  background-color: #059669;
+}
+
+.start-btn:hover {
+  background-color: #047857;
+}
+
+/* Camera Section Styles */
+.container {
+  max-width: 400px;
+  margin: 0 auto;
+}
+
+.camera-section {
+  background-color: #ffffff;
+  border-radius: 0.5rem;
+  padding: 1.5rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
 .title {
-  font-size: 35px;
-  margin-bottom: 10px;
+  text-align: center;
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #1f2937;
+  margin-bottom: 1.5rem;
+  margin-top: 0;
 }
 
 .camera-box {
-  border: 2px solid #ccc;
-  border-radius: 8px;
-  padding: 10px;
-  max-width: 700px;
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  min-height: 200px;
-  background-color: #f9f9f9;
+  margin-bottom: 1rem;
+  position: relative;
+  text-align: center;
 }
 
 .video {
   width: 100%;
-  border-radius: 10px;
-}
-
-.loading {
-  color: #555;
+  max-width: 350px;
+  height: auto;
+  border-radius: 0.5rem;
+  border: 2px solid #d1d5db;
+  background-color: #000;
 }
 
 .error {
-  color: red;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
   text-align: center;
+  height: 12rem;
+  background-color: #fef2f2;
+  border: 2px solid #fecaca;
+  border-radius: 0.5rem;
+  color: #dc2626;
+  padding: 1rem;
+  margin: 0;
+  font-size: 1rem;
+}
+
+.loading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 12rem;
+  background-color: #e5e7eb;
+  border-radius: 0.5rem;
+  color: #4b5563;
+  margin: 0;
+  font-size: 1rem;
 }
 
 .status {
-  font-size: 20px;
-  margin-top: 10px;
-  font-weight: bold;
+  color: #6b7280;
+  margin-bottom: 1rem;
+  font-size: 0.875rem;
+  text-align: center;
 }
 
-.photos-count {
-  margin-top: 10px;
-  font-size: 14px;
-  color: #333;
-}
-
-/* Hidden canvas for capturing images */
 .hidden-canvas {
   display: none;
 }
 
-/* Capture button styles */
+/* Photo previews wrapper */
+.photo-previews-wrapper {
+  width: 100%;
+  margin: 1rem 0;
+  display: flex;
+  justify-content: center;
+}
+
+/* Horizontal photo previews container */
+.photo-previews {
+  display: flex;
+  flex-direction: row; /* Display horizontally */
+  gap: 0.5rem;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap; /* Allow wrapping on small screens */
+  max-width: 100%;
+  padding: 0.5rem;
+}
+
+/* Individual preview photo styling */
+.captured-preview-photo {
+  width: 80px;
+  height: 60px;
+  object-fit: cover;
+  border-radius: 8px;
+  border: 2px solid #007bff;
+  box-shadow: 0 2px 8px rgba(0, 123, 255, 0.2);
+  transition: transform 0.2s ease;
+}
+
+.captured-preview-photo:hover {
+  transform: scale(1.05);
+  box-shadow: 0 4px 12px rgba(0, 123, 255, 0.3);
+}
+
 .button-container {
-  margin-top: 15px;
+  display: flex;
+  justify-content: center;
 }
 
 .capture-button {
-  font-family: 'Jaini Purva', sans-serif;
-  padding: 10px 20px;
-  background-color: #2196f3;
-  color: #fff;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  background-color: #2563eb;
+  color: white;
+  padding: 0.75rem 1.5rem;
+  border-radius: 0.5rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s;
   border: none;
-  border-radiu
+  font-size: 1rem;
+}
+
+.capture-button:disabled,
+.capture-button.disabled {
+  background-color: #9ca3af;
+  cursor: not-allowed;
+}
+
+.capture-button:hover:not(:disabled):not(.disabled) {
+  background-color: #1d4ed8;
+}
+
+/* Results Section Styles */
+.results-section {
+  background-color: #ffffff;
+  border-radius: 0.5rem;
+  padding: 1.5rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.section-title {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #374151;
+  margin-bottom: 1rem;
+  margin-top: 0;
+  text-align: center;
+}
+
+.photos-container {
+  background-color: #f9fafb;
+  border: 1px solid #e5e7eb;
+  border-radius: 0.5rem;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+  gap: 0.5rem;
+}
+
+.captured-photo {
+  width: 100%;
+  height: 8rem;
+  object-fit: cover;
+  border-radius: 0.25rem;
+  border: 1px solid #d1d5db;
+}
+
+.buttons-group {
+  display: flex;
+  gap: 0.5rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.retake-button, .upload-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.5rem;
+  border-radius: 0.5rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s;
+  border: none;
+  font-size: 0.875rem;
+}
+
+.retake-button {
+  background-color: #dc2626;
+  color: white;
+}
+
+.retake-button:hover {
+  background-color: #b91c1c;
+}
+
+.upload-button {
+  background-color: #059669;
+  color: white;
+}
+
+.upload-button:hover {
+  background-color: #047857;
+}
+
+/* Mobile Responsive */
+@media (max-width: 480px) {
+  .mobile-webpage {
+    padding: 0.5rem;
+  }
+  
+  .instructions-container,
+  .camera-section,
+  .results-section {
+    padding: 1rem;
+  }
+  
+  .instruction-text {
+    padding: 1rem;
+    font-size: 1rem;
+  }
+  
+  .title {
+    font-size: 1.25rem;
+  }
+  
+  .section-title {
+    font-size: 1.125rem;
+  }
+  
+  .buttons, .buttons-group {
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .next-btn, .start-btn, .retake-button, .upload-button {
+    width: 100%;
+    max-width: 250px;
+  }
+  
+  .captured-photo {
+    height: 6rem;
+  }
+  
+  .video {
+    max-width: 300px;
+  }
+  
+  .photo-previews {
+    gap: 0.3rem;
+  }
+  
+  .captured-preview-photo {
+    width: 70px;
+    height: 50px;
+  }
+}
+
+/* Extra small screens */
+@media (max-width: 320px) {
+  .captured-preview-photo {
+    width: 60px;
+    height: 45px;
+  }
+}
+
+/* Captured photos section styling */
+.captured-photos-section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 80vh;
+  padding: 2rem;
+  background-color: #D9D9D9;
+}
+
+/* Photos grid container */
+.photos-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  max-width: 1200px;
+  width: 100%;
+  justify-items: center;
+}
+
+/* Individual photo item container */
+.photo-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: white;
+  border-radius: 15px;
+  padding: 1rem;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.photo-item:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+/* Uploaded photo styling */
+.uploaded-photo {
+  width: 100%;
+  max-width: 300px;
+  height: auto;
+  border-radius: 10px;
+  object-fit: cover;
+  border: 2px solid #e9ecef;
+}
+
+/* Mobile responsive design */
+@media (max-width: 768px) {
+  .captured-photos-section {
+    padding: 1rem;
+    min-height: 70vh;
+  }
+  
+  .photos-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+    max-width: 100%;
+  }
+  
+  .photo-item {
+    padding: 0.8rem;
+  }
+  
+  .uploaded-photo {
+    max-width: 250px;
+  }
+}
+
+/* Alternative layout for exactly 3 photos in a row */
+@media (min-width: 1024px) {
+  .photos-grid {
+    grid-template-columns: repeat(3, 1fr);
+    max-width: 1000px;
+  }
+}
