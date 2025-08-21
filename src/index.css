@@ -438,4 +438,86 @@
   border-radius: 15px;
   object-fit: cover;
 }
+.mobile-webpage {
+  margin: 0 auto;
+  padding: 20px;
+  box-sizing: border-box;
+  background-color: #D9D9D9;
+  min-height: 100vh;
+  position: relative;
+}
+.container {
+  padding: 20px;
+  font-family: 'Jaini Purva', sans-serif;
+  max-width: 800px;
+  margin: 0 auto;
+}
 
+/* Camera section styles */
+.camera-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.title {
+  font-size: 35px;
+  margin-bottom: 10px;
+}
+
+.camera-box {
+  border: 2px solid #ccc;
+  border-radius: 8px;
+  padding: 10px;
+  max-width: 700px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 200px;
+  background-color: #f9f9f9;
+}
+
+.video {
+  width: 100%;
+  border-radius: 10px;
+}
+
+.loading {
+  color: #555;
+}
+
+.error {
+  color: red;
+  text-align: center;
+}
+
+.status {
+  font-size: 20px;
+  margin-top: 10px;
+  font-weight: bold;
+}
+
+.photos-count {
+  margin-top: 10px;
+  font-size: 14px;
+  color: #333;
+}
+
+/* Hidden canvas for capturing images */
+.hidden-canvas {
+  display: none;
+}
+
+/* Capture button styles */
+.button-container {
+  margin-top: 15px;
+}
+
+.capture-button {
+  font-family: 'Jaini Purva', sans-serif;
+  padding: 10px 20px;
+  background-color: #2196f3;
+  color: #fff;
+  border: none;
+  border-radiu

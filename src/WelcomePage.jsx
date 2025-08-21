@@ -10,7 +10,8 @@ function WelcomePage() {
   const navigate = useNavigate();
 
   const handleButtonClick = () => {
-    navigate('/camera-code', '_blank', 'noopener,noreferrer');
+    //window.open('https://hub.avaturn.me/create/scan', + '/', '_blank', 'noopener,noreferrer');
+   navigate('/camera-code', '_blank', 'noopener,noreferrer');
   };
 
   const handleHomeClick = () => {
