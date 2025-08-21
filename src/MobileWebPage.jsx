@@ -1,87 +1,182 @@
-import React, { useRef, useState, useEffect } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
+function MobileWebPage() {
+  // Instructions
+  const instructions = [
+    "Please tie your hair.",
+    "Ensure good lighting.",
+    "Take off your glasses."
+  ];
+  const [currentStep, setCurrentStep] = useState(0);
+  const [showInstructions, setShowInstructions] = useState(true);
 
-
-function MobileWebPage ()  {
+  // Camera and photo state
   const videoRef = useRef(null);
   const canvasRef = useRef(null);
-  const [photo, setPhoto] = useState(null);
-  const [cameraActive, setCameraActive] = useState(false);
+  const streamRef = useRef(null);
+  const [stream, setStream] = useState(null);
+  const [photos, setPhotos] = useState([]);
+  const [error, setError] = useState('');
+  const [isCameraReady, setIsCameraReady] = useState(false);
+  const [isCameraActive, setIsCameraActive] = useState(false);
 
-  useEffect(() => {
-    console.log('getUserMedia supported:', !!navigator.mediaDevices?.getUserMedia);
-  }, []);
-
-  const startCamera = async () => {
-    try {
-      const stream = await navigator.mediaDevices.getUserMedia({
-        video: { facingMode: 'environment' },
-        audio: false,
-      });
-
-      if (videoRef.current) {
-        videoRef.current.srcObject = stream;
-        videoRef.current.play();
-        setCameraActive(true);
-      }
-    } catch (err) {
-      console.error('Error accessing camera:', err);
-      alert(
-        'Camera access denied or not supported.\nUse HTTPS or localhost and allow camera permissions.'
-      );
+  // Start camera after instructions
+  const handleNextInstruction = () => {
+    if (currentStep < instructions.length - 1) {
+      setCurrentStep(currentStep + 1);
     }
   };
 
-  const capturePhoto = () => {
-    const video = videoRef.current;
-    const canvas = canvasRef.current;
-    if (!video || !canvas) return;
-
-    const size = 300;
-    canvas.width = size;
-    canvas.height = size;
-
-    const cam = canvas.getContext('2d');
-    cam.drawImage(video, 0, 0, size, size);
-    setPhoto(canvas.toDataURL('image/png'));
+  const handleStartCamera = () => {
+    setShowInstructions(false);
+    startCamera();
   };
 
+  const startCamera = async () => {
+    try {
+      const mediaStream = await navigator.mediaDevices.getUserMedia({ video: { facingMode: 'environment' } });
+      streamRef.current = mediaStream;
+      setStream(mediaStream);
+      if (videoRef.current) {
+        videoRef.current.srcObject = mediaStream;
+      }
+      setIsCameraReady(true);
+      setIsCameraActive(true);
+    } catch (err) {
+      setError('Error accessing camera. Please allow camera permission.');
+    }
+  };
+
+  // Cleanup on unmount
   useEffect(() => {
+    if (!showInstructions) {
+      startCamera();
+    }
     return () => {
-      if (videoRef.current?.srcObject) {
-        videoRef.current.srcObject.getTracks().forEach(track => track.stop());
+      if (streamRef.current) {
+        streamRef.current.getTracks().forEach((track) => track.stop());
       }
     };
-  }, []);
+  }, [showInstructions]);
+
+  // Retake and capture functions remain the same
+  const handleRetakePhotos = () => {
+    setPhotos([]);
+
+    if (streamRef.current) {
+      streamRef.current.getTracks().forEach((track) => track.stop());
+    }
+    startCamera();
+  };
+
+  const handleCapture = () => {
+    if (photos.length >= 3 || !videoRef.current || !canvasRef.current || !isCameraActive) return;
+    const video = videoRef.current;
+    const canvas = canvasRef.current;
+    const ctx = canvas.getContext('2d');
+
+    const width = 320;
+    const height = (video.videoHeight / video.videoWidth) * width;
+    canvas.width = width;
+    canvas.height = height;
+
+    ctx.drawImage(video, 0, 0, width, height);
+    const dataUrl = canvas.toDataURL('image/jpeg');
+    setPhotos((prev) => [...prev, dataUrl]);
+  };
+
+  const handleButtonClick = () => {
+    if (photos.length < 3) {
+      handleCapture();
+    }
+  };
+
+  const isAllPhotosTaken = photos.length === 3;
+
+  const getStatusMessage = () => {
+    const count = photos.length;
+    if (count === 0) return 'No photos taken yet';
+    if (count === 1) return 'One of three photos taken';
+    if (count === 2) return 'Two of three photos taken';
+    if (count === 3) return 'All three photos taken';
+  };
 
   return (
-    <div className="mobile-camera-container">
-      {!cameraActive ? (
-        <button className="mobile-camera-button" onClick={startCamera}>
-          Start Camera
-        </button>
+    <div className="mobile-webpage">
+      {showInstructions ? (
+        <div className="instructions-container">
+          <div className="instruction-slide">
+            <p className="instruction-text">{instructions[currentStep]}</p>
+            <div className="buttons">
+              {currentStep < instructions.length - 1 ? (
+                <button className="next-btn" onClick={handleNextInstruction}>Next</button>
+              ) : (
+                <button className="start-btn" onClick={handleStartCamera}>Start</button>
+              )}
+            </div>
+          </div>
+        </div>
       ) : (
-        <>
-          <video
-            ref={videoRef}
-            autoPlay
-            playsInline
-            muted
-            className="mobile-camera-video"
-          />
-          <button className="mobile-camera-button" onClick={capturePhoto}>
-            Capture Photo
-          </button>
-        </>
-      )}
-      <canvas ref={canvasRef} className="hidden-canvas" />
-      {photo && (
-        <div className="photo-preview">
-          <h3>Captured Photo:</h3>
-          <img src={photo} alt="Captured" />
+        <div className="container">
+          {!isAllPhotosTaken ? (
+            <div className="camera-section">
+              <h2 className="title">Camera Capture App</h2>
+              <div className="camera-box">
+                {error ? (
+                  <p className="error">{error}</p>
+                ) : (
+                  <>
+                    {isCameraReady ? (
+                      <video
+                        ref={videoRef}
+                        autoPlay
+                        playsInline
+                        className="video"
+                      />
+                    ) : (
+                      <p className="loading">Loading camera...</p>
+                    )}
+                  </>
+                )}
+              </div>
+              <p className="status">{getStatusMessage()}</p>
+              <canvas ref={canvasRef} className="hidden-canvas" />
+              <div className="button-container">
+                <button
+                  onClick={handleButtonClick}
+                  disabled={photos.length >= 3}
+                  className={`capture-button ${photos.length >= 3 ? 'disabled' : ''}`}
+                >
+                  {photos.length === 0 ? 'Capture' : 'Capture Next'}
+                </button>
+              </div>
+            </div>
+          ) : (
+            <div className="results-section">
+              <h2 className="section-title">Captured Photos</h2>
+              <div className="photos-container">
+                {photos.map((photo, index) => (
+                  <img
+                    key={index}
+                    src={photo}
+                    alt={`Captured ${index + 1}`}
+                    className="captured-photo"
+                  />
+                ))}
+              </div>
+              <div className="buttons-group">
+                <button className="retake-button" onClick={handleRetakePhotos}>
+                  Retake the pictures
+                </button>
+                <button className="upload-button" onClick={() => alert('Uploading photos...')}>
+                  Upload Photos
+                </button>
+              </div>
+            </div>
+          )}
         </div>
       )}
     </div>
   );
-};
+}
 
 export default MobileWebPage;
