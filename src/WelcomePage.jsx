@@ -5,6 +5,28 @@ import Avatar3 from './assets/avatar3.png';
 import Avatar4 from './assets/avatar4.png';
 import centerimage from './assets/centerimage.jpg';
 import avatar5 from './assets/avatar5.jpg';
+import React, { Suspense } from 'react';
+import { Canvas } from '@react-three/fiber';
+import { OrbitControls, useGLTF } from '@react-three/drei';
+
+
+
+function GLBViewer({ modelUrl }) {
+  const { scene } = useGLTF(modelUrl);
+  return (
+    <Canvas camera={{ position: [0, 0, 2.5] }}>
+      <ambientLight intensity={1} />
+      <directionalLight position={[0, 5, 5]} />
+      <Suspense fallback={null}>
+        <primitive object={scene} />
+        <OrbitControls enableZoom={false} />
+      </Suspense>
+    </Canvas>
+  );
+}
+useGLTF.preload("/models/model1.glb");
+useGLTF.preload("/models/model2.glb");
+useGLTF.preload("/models/model3.glb");
 
 function WelcomePage() {
   const navigate = useNavigate();
@@ -28,7 +50,6 @@ function WelcomePage() {
 
   return (
     <div className="welcome-page">
-      {/* Navbar */}
       <div className="navbar-container">
         <a className="navbar-chulaavatar-logo" onClick={handleHomeClick}>ChulaAvatar</a>
         <ul className="navbar-menu">
@@ -38,7 +59,7 @@ function WelcomePage() {
         </ul>
       </div>
 
-      {/* Welcome text and avatar icons */}
+      
       <div className="welcome-container">
         <h1 className="welcome-h1">Welcome to ChulaAvatar</h1>
         <p className="welcome-p">
@@ -53,7 +74,7 @@ function WelcomePage() {
           <img src={Avatar4} alt="Avatar 4" className="avatar-icon" />
         </div>
 
-        {/* Centered button */}
+       
         <div className="generate-button-container">
           <button onClick={handleButtonClick} className="welcome-generate-avatar">
             Create Avatar
@@ -63,6 +84,7 @@ function WelcomePage() {
 
      
       <div className="main-content-container">
+        <h2 className="topic-title">MANGOS: IntaniaVerse</h2>
         <div className="centerimage">
           <img src={centerimage} alt="Centered" />
         </div>
@@ -80,9 +102,17 @@ function WelcomePage() {
                paper <a href='https://ieeexplore.ieee.org/document/11101093'>here</a>.</p>
         </div>
 
-        <div className="avatar5-container">
-          <img src={avatar5} alt="Avatar 5" />
-        </div>
+        <div className="avatar-models-row">
+          <div className="avatar5-container">
+            <img src={avatar5} alt="Avatar 5" />
+          </div>
+
+        <div className="glb-models-container">
+          <GLBViewer modelUrl="/models/Chula1.glb" />
+          <GLBViewer modelUrl="/models/Chula2.glb" />
+          <GLBViewer modelUrl="/models/Chula3.glb" />
+      </div>
+      </div>
       
         
       </div>
