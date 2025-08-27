@@ -8,25 +8,30 @@ import avatar5 from './assets/avatar5.jpg';
 import React, { Suspense } from 'react';
 import { Canvas } from '@react-three/fiber';
 import { OrbitControls, useGLTF } from '@react-three/drei';
+import { Group } from 'three/examples/jsm/libs/tween.module.js';
 
 
-
-function GLBViewer({ modelUrl }) {
+function GLBViewer({ modelUrl, position, scale}) {
   const { scene } = useGLTF(modelUrl);
+  
   return (
-    <Canvas camera={{ position: [0, 0, 2.5] }}>
+    
+    <Canvas camera={{ position: [0, 0, 10.5] }}>
       <ambientLight intensity={1} />
       <directionalLight position={[0, 5, 5]} />
       <Suspense fallback={null}>
-        <primitive object={scene} />
-        <OrbitControls enableZoom={false} />
+        <group position = {position} scale = {scale}>
+          <primitive object={scene} />
+        </group>
       </Suspense>
-    </Canvas>
+      </Canvas>
+    
   );
 }
 useGLTF.preload("/models/model1.glb");
 useGLTF.preload("/models/model2.glb");
 useGLTF.preload("/models/model3.glb");
+
 
 function WelcomePage() {
   const navigate = useNavigate();
@@ -103,16 +108,18 @@ function WelcomePage() {
         </div>
 
         <div className="avatar-models-row">
+        <div className="glb-models-container">
+          <GLBViewer modelUrl="/models/Chula1.glb" position = {[1,0,0]} scale = {[4.1,4.1,4.1]} />
+          <GLBViewer modelUrl="/models/Chula2.glb" position = {[-2,0,0]} scale = {[4.1,4.1,4.1]} />
+          <GLBViewer modelUrl="/models/Chula3.glb" position = {[-3.5,0,0]} scale = {[4.1,4.1,4.1]} />
+        </div>
+
           <div className="avatar5-container">
             <img src={avatar5} alt="Avatar 5" />
           </div>
 
-        <div className="glb-models-container">
-          <GLBViewer modelUrl="/models/Chula1.glb" />
-          <GLBViewer modelUrl="/models/Chula2.glb" />
-          <GLBViewer modelUrl="/models/Chula3.glb" />
-      </div>
-      </div>
+        
+        </div>
       
         
       </div>
